@@ -1,9 +1,12 @@
-import Categories from "./components/categories/categories.component";
+import { BrowserRouter } from "react-router-dom";
+import MainRouter from "./MainRouter";
 
 const App = () => {
 
   return (
-    <Categories />
+    <BrowserRouter>
+      <MainRouter/>
+    </BrowserRouter>
   );
 }
 
