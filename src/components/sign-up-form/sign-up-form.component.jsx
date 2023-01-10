@@ -49,13 +49,49 @@ const SignUpForm = () => {
         <div>
             <h1>Sign up with your email and password</h1>
             <form onSubmit={onSubmitHandler}>
-                <FormInput label={'Display Name'} type="text" required name='displayName' value={displayName} onChange={onChangeHandler}/>
+                <FormInput 
+                    label={'Display Name'} 
+                    inputOptions={{
+                      type:"text", 
+                      required: true, 
+                      name:'displayName', 
+                      value:displayName, 
+                      onChange:onChangeHandler
+                    }}
+                />
                 
-                <FormInput label={'Email'} type="email" required name='email' value={email} onChange={onChangeHandler} />
+                <FormInput 
+                    label={'Email'}
+                    inputOptions={{
+                        type:"email", 
+                        required: true, 
+                        name:'email', 
+                        value: email, 
+                        onChange: onChangeHandler
+                    }}  
+                />
                 
-                <FormInput label={'Password'} type="password" required name='password' value={password} onChange={onChangeHandler}/>
+                <FormInput 
+                    label={'Password'}
+                    inputOptions={{
+                        type:"password",  
+                        required: true, 
+                        name:'password', 
+                        value: password, 
+                        onChange:onChangeHandler
+                    }} 
+                />
                 
-                <FormInput label={'Confirm Password'} type="password" required name='confirmPassword' value={confirmPassword} onChange={onChangeHandler}/>
+                <FormInput 
+                    label={'Confirm Password'}
+                    inputOptions={{
+                        type:"password", 
+                        required: true, 
+                        name:'confirmPassword', 
+                        value: confirmPassword, 
+                        onChange:onChangeHandler
+                    }} 
+                />
                 
                 <button type="submit">Sign Up</button>
             </form>
