@@ -42,7 +42,7 @@ const SigninForm = () => {
 
             resetFormFileds()
         } catch (error) {
-            console.log('Somethingwent wrong', error);
+            console.log('Something went wrong', error);
         }
     }
 
