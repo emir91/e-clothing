@@ -19,7 +19,7 @@ const Navigation = () => {
                     <CrwnLogo />
                 </Link>
                 <div className='nav-links-container'>
-                    <Link className='nav-link' to='/test'>SHOP</Link>   
+                    <Link className='nav-link' to='/shop'>SHOP</Link>   
                     { currentUser ? 
                         <div className='nav-link' onClick={signOutUser}>
                             SIGNOUT
