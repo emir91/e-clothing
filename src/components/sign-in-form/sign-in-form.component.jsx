@@ -36,10 +36,6 @@ const SigninForm = () => {
         e.preventDefault()
         try {
             const {user} = await signInEmailPassword(email, password)
-
-            setCurrentUser(user)
-            // await createUserDocumentFromAuth(user)
-
             resetFormFileds()
         } catch (error) {
             console.log('Something went wrong', error);
