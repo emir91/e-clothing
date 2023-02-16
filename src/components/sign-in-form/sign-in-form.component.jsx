@@ -32,7 +32,7 @@ const SigninForm = () => {
     const onSubmitHandler = async (e) => {
         e.preventDefault()
         try {
-            const {user} = await signInEmailPassword(email, password)
+            await signInEmailPassword(email, password)
             resetFormFileds()
         } catch (error) {
             console.log('Something went wrong', error);
