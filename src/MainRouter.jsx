@@ -12,7 +12,7 @@ const MainRouter = () => {
         <Routes>
             <Route path='/' element={<Navigation />}>
                 <Route index element={<Home />} />
-                <Route path='shop' element={<Shop/>}/>
+                <Route path='shop/*' element={<Shop/>}/>
                 <Route path='auth' element={<Authentication />}/>
                 <Route path='signup' element={<SignUpForm />}/>
                 <Route path='checkout' element={<Checkout />}/>
