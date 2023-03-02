@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import { CategoryContext } from '../../contexts/category.context';
 
 import ProductCard from '../../components/product-card/product-card.component';
+import './category.styles.scss'
 
 const Category = () => {
     const { category } = useParams();
