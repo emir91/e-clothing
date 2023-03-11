@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import FormInput from '../../components/form-input/form-input.component';
-import Button from '../../components/button/button.component';
+import Button, {BUTTON_TYPES_CLASSES} from '../../components/button/button.component';
 import { signInEmailPassword, signinWithGooglePopup } from '../../utils/firebase/firebase.utils';
-import './sign-in-form.styles.scss'
+
+import { SignInContainer, SignInTitle, ButtonsContainer } from './sign-in-form.styles';
 
 const defaultFormFields = {
     email: '',
@@ -40,20 +41,19 @@ const SigninForm = () => {
     }
 
     return (
-        <div className='sign-in-container'>
-            <h2>Already have an account</h2>
+        <SignInContainer>
+            <SignInTitle>Already have an account</SignInTitle>
             <span>Sign in with your email and password</span>
             <form onSubmit={onSubmitHandler}>
-            <FormInput label={'email'} inputOptions={{ type: 'email', required: true, name: 'email', value: email, onChange: onChangeHandler }}/>
-            <FormInput label={'password'} inputOptions={{ type: 'password', required: true, name: 'password', value: password, onChange: onChangeHandler }} />
+                <FormInput label={'email'} inputOptions={{ type: 'email', required: true, name: 'email', value: email, onChange: onChangeHandler }}/>
+                <FormInput label={'password'} inputOptions={{ type: 'password', required: true, name: 'password', value: password, onChange: onChangeHandler }} />
 
-            <div className='buttons-container'>
-                <Button type="submit">Sign In</Button>
-                <Button onClick={logGoogleUser} buttonType={'google'}>Google Sign In</Button>
-            </div>
-        </form>
-        
-        </div>
+                <ButtonsContainer>
+                    <Button type="submit">Sign In</Button>
+                    <Button onClick={logGoogleUser} buttonType={BUTTON_TYPES_CLASSES.google}>Google Sign In</Button>
+                </ButtonsContainer>
+            </form>
+        </SignInContainer>
     );
 };
 
