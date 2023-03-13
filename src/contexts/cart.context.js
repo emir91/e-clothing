@@ -93,12 +93,14 @@ export const CartProvider = ({ children }) => {
         }));
     }
 
+    const setDropdownOpen = (bool) => {
+        dispatch(createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, bool));
+    }
+
     const addItemToCart = (newCartItem) => {
         const newCartItems = addCartItem(cartItems, newCartItem);
         updateCartItemsReducer(newCartItems);
     }
-
-
 
     const removeItemFromCart = (item) => {
         const newCartItems = removeCartItem(cartItems, item);
@@ -109,12 +111,6 @@ export const CartProvider = ({ children }) => {
         const newCartItems = clearCartItem(cartItems, item);
         updateCartItemsReducer(newCartItems);
     }
-
-    const setDropdownOpen = (bool) => {
-        dispatch(createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, bool));
-    }
-
-
 
     const value = {
         dropdownOpen,
