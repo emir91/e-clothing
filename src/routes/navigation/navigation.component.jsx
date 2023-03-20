@@ -17,6 +17,7 @@ const Navigation = () => {
     const currentUser = useSelector(currentUserSelector);
     const dropdownOpen = useSelector(selectIsDropdownOpen);
 
+
     return (
         <>
             <NavigationContainer>

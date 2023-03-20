@@ -9,7 +9,6 @@ const CartIcon = () => {
     const cartCount = useSelector(selectCartCount);
 
     const onToggleHandler = () => {
-        console.log(dropdownOpen);
         dispatch(setDropdownOpen(!dropdownOpen));
     }
 
