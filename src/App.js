@@ -1,27 +1,29 @@
 import { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { useDispatch } from "react-redux";
+//import { useDispatch } from "react-redux";
 
 import MainRouter from "./MainRouter";
 import {
-  onAuthStateChangedListener,
-  createUserDocumentFromAuth
+  //onAuthStateChangedListener,
+  //createUserDocumentFromAuth,
+  getCurrentUser
 } from "./utils/firebase/firebase.utils";
-import { setCurrentUser } from "./store/user/user.action";
+//import { setCurrentUser } from "./store/user/user.action";
 
 const App = () => {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListener((user) => {
+    /*const unsubscribe = onAuthStateChangedListener((user) => {
       if (user) {
         createUserDocumentFromAuth(user)
       }
       dispatch(setCurrentUser(user));
     })
 
-    return unsubscribe
-  }, [dispatch])
+    return unsubscribe*/
+    getCurrentUser().then((user) => console.log(user));
+  }, [])
 
   return (
     <BrowserRouter>
