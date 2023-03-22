@@ -80,8 +80,8 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
             console.log('Error creating the user', error.message);
         }
 
-        return userDocRef;
     }
+    return userSnapshot;
 }
 
 export const createUserEmailAndPassword = async (email, password) => {
