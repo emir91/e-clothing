@@ -3,8 +3,8 @@ import { CartItem } from "./cart.types";
 import { setCartItems, setDropdownOpen } from "./cart.actions";
 
 export type CartState = {
-  readonly dropdownOpen: boolean;
-  readonly cartItems: CartItem[];
+  dropdownOpen: boolean;
+  cartItems: CartItem[];
 };
 
 const INITIAL_STATE: CartState = {
@@ -14,7 +14,7 @@ const INITIAL_STATE: CartState = {
 
 export const cartReducer = (
   state = INITIAL_STATE,
-  action = {} as AnyAction
+  action: AnyAction
 ): CartState => {
   if (setDropdownOpen.match(action)) {
     return {
