@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC,ButtonHTMLAttributes} from 'react';
 import { 
     BaseButton, 
     GoogleSignInButton, 
@@ -7,13 +7,13 @@ import {
 } from './button.styles';
 
 
-export const BUTTON_TYPES_CLASSES = {
-    base: 'base',
-    inverted: 'inverted',
-    google: 'google-sign-in'
+export enum BUTTON_TYPES_CLASSES {
+    base = 'base',
+    inverted = 'inverted',
+    google = 'google-sign-in'
 }
 
-const getButton = (buttonType = BUTTON_TYPES_CLASSES.base) => {
+const getButton = (buttonType = BUTTON_TYPES_CLASSES.base): typeof BaseButton => {
     return {
         [BUTTON_TYPES_CLASSES.base]: BaseButton,
         [BUTTON_TYPES_CLASSES.google]: GoogleSignInButton,
@@ -22,7 +22,12 @@ const getButton = (buttonType = BUTTON_TYPES_CLASSES.base) => {
  
 };
 
-const Button = ({ children, buttonType, isLoading = false, ...otherProps}) => {
+type ButtonType = {
+    buttonType?: BUTTON_TYPES_CLASSES;
+    isLoading?: boolean
+} & ButtonHTMLAttributes<HTMLButtonElement>
+
+const Button: FC<ButtonType> = ({ children, buttonType, isLoading = false, ...otherProps}) => {
     const CustomButton = getButton(buttonType);
     
     return (

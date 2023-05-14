@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { googleSignInStart, emailSignInStart } from '../../store/user/user.action';
-import FormInput from '../../components/form-input/form-input.component';
-import Button, {BUTTON_TYPES_CLASSES} from '../../components/button/button.component';
-import { signInEmailPassword, signinWithGooglePopup } from '../../utils/firebase/firebase.utils';
+import FormInput from '../form-input/form-input.component';
+import Button, {BUTTON_TYPES_CLASSES} from '../button/button.component';
 
 import { SignInContainer, SignInTitle, ButtonsContainer } from './sign-in-form.styles';
 
@@ -20,7 +19,7 @@ const SigninForm = () => {
     const dispatch = useDispatch();
 
 
-    const onChangeHandler = (e) => {
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
 
         setFormFields({...formFields, [name]: value})
@@ -34,7 +33,7 @@ const SigninForm = () => {
         setFormFields(defaultFormFields)
     }
 
-    const onSubmitHandler = async (e) => {
+    const onSubmitHandler = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
             dispatch(emailSignInStart(email, password));
@@ -49,8 +48,8 @@ const SigninForm = () => {
             <SignInTitle>Already have an account</SignInTitle>
             <span>Sign in with your email and password</span>
             <form onSubmit={onSubmitHandler}>
-                <FormInput label={'email'} inputOptions={{ type: 'email', required: true, name: 'email', value: email, onChange: onChangeHandler }}/>
-                <FormInput label={'password'} inputOptions={{ type: 'password', required: true, name: 'password', value: password, onChange: onChangeHandler }} />
+                <FormInput label={'email'} type={'email'} required={true} name={'email'} value={email} onChange={onChangeHandler}/>
+                <FormInput label={'password'} type={'password'} required={true} name={'password'} value={password} onChange={onChangeHandler }/>
 
                 <ButtonsContainer>
                     <Button type="submit">Sign In</Button>

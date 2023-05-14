@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
-//import { createUserDocumentFromAuth, createUserEmailAndPassword } from '../../utils/firebase/firebase.utils';
+import { AuthError, AuthErrorCodes } from 'firebase/auth';
+
 import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component';
 
@@ -20,7 +21,7 @@ const SignUpForm = () => {
 
     const dispatch = useDispatch();
 
-    const onChangeHandler = (e) => {
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const {name, value } = e.target
 
         setFormFields({...formFields, [name]: value})
@@ -30,7 +31,7 @@ const SignUpForm = () => {
         setFormFields(defaultFormFields)
     }
 
-    const onSubmitHandler = async (e) => {
+    const onSubmitHandler = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         
         if(password !== confirmPassword) {
@@ -45,7 +46,7 @@ const SignUpForm = () => {
             dispatch(signUpStart(email, password, displayName));
             resetFormFileds()
         } catch (error) {
-            if(error.code === 'auth/email-already-in-use'){
+            if((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS){
                 alert('Email already in use.')
             } else {
                 console.log(error);
@@ -60,46 +61,38 @@ const SignUpForm = () => {
             <form onSubmit={onSubmitHandler}>
                 <FormInput 
                     label={'Display Name'} 
-                    inputOptions={{
-                      type:"text", 
-                      required: true, 
-                      name:'displayName', 
-                      value:displayName, 
-                      onChange:onChangeHandler
-                    }}
+                    type={"text"} 
+                    required={ true} 
+                    name={'displayName'} 
+                    value={displayName} 
+                    onChange={onChangeHandler}
                 />
                 
                 <FormInput 
                     label={'Email'}
-                    inputOptions={{
-                        type:"email", 
-                        required: true, 
-                        name:'email', 
-                        value: email, 
-                        onChange: onChangeHandler
-                    }}  
+                    type={"email"}
+                    required={ true}
+                    name={'email'}
+                    value={ email}
+                    onChange={ onChangeHandler}  
                 />
                 
                 <FormInput 
                     label={'Password'}
-                    inputOptions={{
-                        type:"password",  
-                        required: true, 
-                        name:'password', 
-                        value: password, 
-                        onChange:onChangeHandler
-                    }} 
+                    type={"password"}
+                    required={ true}
+                    name={'password'}
+                    value={ password}
+                    onChange={onChangeHandler}
                 />
                 
                 <FormInput 
                     label={'Confirm Password'}
-                    inputOptions={{
-                        type:"password", 
-                        required: true, 
-                        name:'confirmPassword', 
-                        value: confirmPassword, 
-                        onChange:onChangeHandler
-                    }} 
+                    type={"password"}
+                    required={ true}
+                    name={'confirmPassword'}
+                    value={ confirmPassword}
+                    onChange={onChangeHandler} 
                 />
                 
                 <Button type="submit">Sign Up</Button>
