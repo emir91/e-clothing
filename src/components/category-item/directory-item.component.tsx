@@ -7,8 +7,13 @@ import {
     DirectoryItemTitle, 
     ShopNow 
 } from './directory-item.styles';
+import { TDirectoryItem } from '../directory/directory.component';
 
-const DirectoryItem = ({category}) => {
+type DirectoryItemProps = {
+  category: TDirectoryItem
+};
+
+const DirectoryItem: React.FC<DirectoryItemProps> = ({category}) => {
     const { title, imageUrl, route } = category
     const navigate = useNavigate();
 

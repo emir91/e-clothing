@@ -50,23 +50,3 @@ export const ProductCardFooterName = styled.span`
 export const ProductCardFooterPrice = styled.span`
   width: 10%;
 `
-
-  // button {
-  //   width: 80%;
-  //   opacity: 0.7;
-  //   position: absolute;
-  //   top: 255px;
-  //   display: none;
-  // }
-
-  // &:hover {
-  //   img {
-  //     opacity: 0.8;
-  //   }
-
-  //   button {
-  //     opacity: 0.85;
-  //     display: flex;
-  //   }
-  // }
-
